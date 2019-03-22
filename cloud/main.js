@@ -19,8 +19,8 @@ Parse.Cloud.define('sendNotification', function(req, res) {
     },
     body: JSON.stringify(jsonBody)
   }).then(function (httpResponse) {
-     console.log(httpResponse);
+     res.send(httpResponse);
   }, function (httpResponse) {
-     console.log(httpResponse);
+     res.send(httpResponse);
   });
 });
