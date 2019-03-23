@@ -7,7 +7,7 @@ Parse.Cloud.define('send', function(req, res) {
  
   var jsonBody = {
     app_id: "f9b9293b-9e2e-451e-bc78-d6ced90b5742",
-    included_segments: ["All"],
+    include_player_ids: [req.params.code],
     contents: {en: `Nuova attivazione: ${req.params.mission} per ${req.params.cs}`},
     ios_sound: "allarme_areu.mp3"
   };
@@ -17,8 +17,8 @@ Parse.Cloud.define('send', function(req, res) {
   url: "https://onesignal.com/api/v1/notifications", 
   method: "POST", 
   headers: { 
-    "Content-Type": "application/json;charset=utf-8", 
-    "Authorization": "Basic ZjYxMzdjMTQtNTkzNS00MjEwLTg3NTgtZWRlYTllMDNkM2Ri" 
+    "Content-Type": "application/json;charset=utf-8"//, 
+    //"Authorization": "Basic ZjYxMzdjMTQtNTkzNS00MjEwLTg3NTgtZWRlYTllMDNkM2Ri" 
   }, 
   body: JSON.stringify(jsonBody), 
   success: function(httpResponse) { 
