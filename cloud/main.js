@@ -23,12 +23,11 @@ Parse.Cloud.define('send', function(req, res) {
   }, 
   body: JSON.stringify(jsonBody), 
   success: function(httpResponse) { 
-    res.success("sent"); 
+    response.success("sent"); 
   }, 
   error: function(httpResponse) { 
-    res.error('Failed with: ' + httpResponse.status); 
+    response.error('Failed with: ' + httpResponse.status); 
   } 
 });
-  
-  return res;
+ 
 });
