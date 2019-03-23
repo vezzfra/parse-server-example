@@ -7,7 +7,7 @@ Parse.Cloud.define('send', function(req, res) {
  
   var jsonBody = {
     app_id: "f9b9293b-9e2e-451e-bc78-d6ced90b5742",
-    included_segments: ["All"],
+    filters: [{"field": "tag", "key": "user", "relation": "=", "value": req.params.cs}],
     contents: {en: `Nuova attivazione: ${req.params.mission} per ${req.params.cs}`},
     ios_sound: "allarme_areu.mp3"
   };
