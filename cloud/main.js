@@ -32,7 +32,7 @@ Parse.Cloud.define('send', function(req, res) {
  
 });
 
-Parse.Cloud.define('sendEmail' function(req,res) {
+/*Parse.Cloud.define('sendEmail' function(req,res) {
   var username = req.params.get('email');
   var password = req.params.get('pass');
   var nome = req.params.get('name');
@@ -53,4 +53,4 @@ Parse.Cloud.define('sendEmail' function(req,res) {
       response.error('Failed with: ' + httpResponse.status); 
     }
   });
-});
+});*/
