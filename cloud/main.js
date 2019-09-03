@@ -31,3 +31,26 @@ Parse.Cloud.define('send', function(req, res) {
 });
  
 });
+
+Parse.Cloud.define('sendEmail' function(req,res) {
+  var username = req.params.get('email');
+  var password = req.params.get('pass');
+  var nome = req.params.get('name');
+  var cognome = req.params.get('surname');
+  
+  Parse.Cloud.httpRequest({
+    url: "https://api.mailjet.com/v3/send",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "e7b7e9e69e309a866df37cb23324b9a0:63726ad3ea14d52a33e30ad1c124a421"
+    },
+    body: '{"FromEmail":"info@portaleagentibwt.it","FromName":"BWT Italia Srl","Subject":"La tua termocamera sta arrivando","Text-part":`Gentile Sig. ${nome} ${cognome},\ngrazie alla spesa effettuata il Suo agente ha registrato a suo nome una termocamera professionale per smartphone Flir One Pro!\n I premi verranno spediti al termine della promozione, se nel frattempo vuole conoscere il prodotto e verificare lo stato della richiesta può connettersi al portale https://tracking.portaleagentibwt.it e inserire le seguenti credenziali:\nUsername: ${username}\nPassword: ${password}.`, "Html-part":"","Recipients":["Email":`${username}`]}',
+    success: function(httpResponse) {
+      response.success("sent");
+    }, 
+    error: function(httpResponse) { 
+      response.error('Failed with: ' + httpResponse.status); 
+    }
+  });
+});
